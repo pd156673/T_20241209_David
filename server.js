@@ -75,6 +75,10 @@ app.get('/ueberweisungAusfuehren', (req, res) => {
 	res.render('ueberweisungAusfuehren.ejs',{});
 });
 
+app.get('/profil', (req, res) => {
+	res.render('profil.ejs',{});
+});
+
 // Die Funktion app.get('/geldAnlegen...) wird abgearbeitet, wenn der Benutzer die Seite geldAnlegen
 // im Browser ansurft.
 
@@ -118,6 +122,30 @@ app.post('/geldAnlegen', (req, res) => {
 		Meldung: "Ihre Zinsen betragen: " + zinsen
 	});
 });
+
+app.post('/geldAnlegen', (req, res) => {
+
+	// Die Werte, die der Kunde im Formular eingegeben hat, werden an den Server gesendet.
+	// Der Wert der Variablen Betrag wird aus dem body der Kundenanfrage (req) ausgelesen und zugewiesen an die lokale Variable
+	// namens betrag.
+
+	let betrag = req.body.Betrag;
+	console.log("kreditBeantragen: Gewünschter Betrag: " + betrag + " Euro")
+
+	let laufzeit = req.body.Laufzeit;
+	console.log("Kreditbeantragen: Gewünschte Laufzeit: " + laufzeit + " Jahre")
+
+	let kreditsatz = 0.1
+
+	let Kredit = betrag * kreditsatz;
+
+	res.render('kreditbeantragen.ejs',{
+		Betrag: betrag,
+		Laufzeit: laufzeit,
+		Meldung: "Ihr Kredit beträgt: " + Kredit
+	});
+});
+
 
 app.get('/login', (req, res) => {
 	res.render('login.ejs',{});

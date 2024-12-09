@@ -21,7 +21,24 @@
         <a href="login"><i class="fa fa-sign-out"></i> Abmelden</a>
     </header>
     <main>
-        <H1>Kredit beantragen</H1>
+        <h1>Kredit beantragen</h1>
+        <!--das h von h1 wurde in grossen buchstaben geschrieben-->
+        <form method="post">
+            <!--Das Label zeigt dem Kunden Text im Formular an.-->
+            <label>Gewünschter Betrag in Euro</label></br>
+            <!--Das Eingabefeld hat den type number, womit die Eingabe von Zahlen erzwungen wird.-->
+            <!--Der Name lautet Betrag. Der Server greift über den Namen auf das Input zu.-->
+            <input type="number" name="Betrag" value=<%= Betrag %>></br>
+            <label>Gewünschte Laufzeit in Jahren</label></br>
+            <input type="number" name="Laufzeit" value=<%= Laufzeit %>></br>
+            <!--Die formaction legt fest, dass auf dem Server die app.post('/geldAnlegen') abgearbeitet wird,
+            sobald der Kunde den Button drückt.-->
+            <button type="submit" formaction="/geldAnlegen">Zinsen berechnen</button>
+            <label for="tentacles">Number of tentacles (10-100):</label>
+            <input type="number" id="tentacles" name="tentacles" min="10" max="100" />
+
+        </form>                
+        <p><%= Meldung %></p>
     </main>
 
     <footer>
